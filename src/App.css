@@ -1,38 +1,87 @@
-.App {
-  text-align: center;
+/* App.css */
+body {
+  background-color: #1d2125; /* Dark background color */
+  color: #ffffff; /* Light text color */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+  background-color: #24292d; /* Slightly lighter background for containers */
+  padding: 20px;
+  border-radius: 8px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.card {
+  background-color: #2b3136; /* Dark background for cards */
+  color: #ffffff; /* Light text color for cards */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.navbar {
+  background-color: #000000; /* Dark background for navbar */
+}
+
+.coin-container {
+  margin-top: 20px;
+}
+
+#coin {
+  position: relative;
+  margin: 0 auto;
+  width: 300px;
+  height: 300px;
+  transform-style: preserve-3d;
+  animation: spin 1s linear infinite; /* Continuous spin animation */
+}
+
+#coin.rotating {
+  animation: spin 1s linear infinite; /* Continuous spin animation */
+}
+
+#coin.heads,
+#coin.tails {
+  animation: none; /* Stop animation */
+}
+
+#coin div {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: inset 0 0 45px rgba(255, 255, 255, 0.3),
+    0 12px 20px -10px rgba(0, 0, 0, 0.4);
+  position: absolute;
+  backface-visibility: hidden;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: 24px;
+}
+
+.side-a {
+  background-color: #bb0000;
   color: white;
+  z-index: 100;
 }
 
-.App-link {
-  color: #61dafb;
+.side-b {
+  background-color: #3e3e3e;
+  color: white;
+  transform: rotateY(-180deg);
 }
 
-@keyframes App-logo-spin {
+#coin.heads .side-b,
+#coin.tails .side-a {
+  transform: rotateY(0);
+}
+
+#coin.heads .side-a,
+#coin.tails .side-b {
+  transform: rotateY(180deg);
+}
+
+@keyframes spin {
   from {
-    transform: rotate(0deg);
+    transform: rotateY(0);
   }
   to {
-    transform: rotate(360deg);
+    transform: rotateY(360deg);
   }
 }
